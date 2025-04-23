@@ -1,14 +1,16 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'language-selector',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './language-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageSelectorComponent {
   languageService = inject(LanguageService)
+  currentLang = this.languageService.currentLang
 
   languages = signal([
     { code: 'en', flag: '🇺🇸' },
